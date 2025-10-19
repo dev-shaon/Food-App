@@ -9,9 +9,9 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
    void initState() {
       super.initState();
-
       Future.delayed(Duration(seconds: 2), () {
         Navigator.pushReplacement(
           context,
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/splash.png"),
-            fit: BoxFit.cover,          
+            fit: BoxFit.none,          
           ),
         ),
       ),
