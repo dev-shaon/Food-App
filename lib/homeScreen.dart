@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/product_Details_Screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,7 +9,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   int bottomNavIndex = 0;
   int categoryIndex = 0;
 
@@ -20,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
       "sub": "Wendy’s Burger",
       "rating": 4.9,
       "img": "assets/images/b1.png",
-
     },
     {
       "name": "Hamburger",
@@ -29,25 +28,25 @@ class _HomeScreenState extends State<HomeScreen> {
       "img": "assets/images/b2.png",
     },
     {
-      "name": "Cheeseburger",
+      "name": "Chicken Burger",
       "sub": "Chicken Burger",
       "rating": 4.8,
       "img": "assets/images/b3.png",
     },
     {
-      "name": "Cheeseburger",
+      "name": "Mutton Burger",
       "sub": "Wendy’s Burger",
       "rating": 4.7,
       "img": "assets/images/b4.png",
     },
     {
-      "name": "Cheeseburger",
+      "name": "Crispy Burger",
       "sub": "Fried Chicken Burger",
       "rating": 4.6,
       "img": "assets/images/b1.png",
     },
     {
-      "name": "Cheeseburger",
+      "name": "BBQ Burger",
       "sub": "Fried Chicken Burger",
       "rating": 4.6,
       "img": "assets/images/b4.png",
@@ -82,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
             IconButton(
               icon: Icon(
                 Icons.home,
-                color: bottomNavIndex == 0 ? Colors.black : Colors.white, 
+                color: bottomNavIndex == 0 ? Colors.black : Colors.white,
                 size: 30,
               ),
               onPressed: () {
@@ -161,10 +160,11 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Header
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset("assets/images/logo.png", width: 90, height: 70),
+              Image.asset("assets/images/logo.png"),
               ClipRRect(
                 borderRadius: BorderRadius.circular(25),
                 child: Image.asset(
@@ -182,6 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(height: 20),
 
+          // Search bar
           Row(
             children: [
               Expanded(
@@ -225,6 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(height: 30),
 
+          // Categories
           SizedBox(
             height: 45,
             child: ListView.builder(
@@ -245,7 +247,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       vertical: 10,
                     ),
                     decoration: BoxDecoration(
-                      
                       color: isSelected ? Colors.red : Colors.transparent,
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(color: Colors.grey.shade300),
@@ -254,7 +255,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       categories[index],
                       style: TextStyle(
                         color: isSelected ? Colors.white : Colors.black,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                        fontWeight:
+                            isSelected ? FontWeight.bold : FontWeight.normal,
                       ),
                     ),
                   ),
@@ -264,6 +266,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(height: 20),
 
+          // Product Grid
           Expanded(
             child: GridView.builder(
               itemCount: products.length,
@@ -273,78 +276,88 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisSpacing: 15,
                 childAspectRatio: 0.8,
               ),
-              
               itemBuilder: (context, index) {
                 final product = products[index];
-                return Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        blurRadius: 8,
-                        spreadRadius: 2,
-                        offset: const Offset(0, 3),
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ProductDetailsScreen(product: product),
                       ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                            product["img"],
-                            height: 90,
-                            width: double.infinity,
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          product["name"],
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                        Text(
-                          product["sub"],
-                          style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontSize: 13,
-                          ),
-                        ),
-                        const Spacer(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.star,
-                                  color: Colors.orange,
-                                  size: 18,
-                                ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  product["rating"].toString(),
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Icon(
-                              Icons.favorite_border,
-                              color: Colors.black.withOpacity(0.7),
-                            ),
-                          ],
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          blurRadius: 8,
+                          spreadRadius: 2,
+                          offset: const Offset(0, 3),
                         ),
                       ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.asset(
+                              product["img"],
+                              height: 90,
+                              width: double.infinity,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            product["name"],
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(
+                            product["sub"],
+                            style: TextStyle(
+                              color: Colors.grey.shade600,
+                              fontSize: 13,
+                            ),
+                          ),
+                          const Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.star,
+                                    color: Colors.orange,
+                                    size: 18,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    product["rating"].toString(),
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.favorite_border,
+                                color: Colors.black.withOpacity(0.7),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
