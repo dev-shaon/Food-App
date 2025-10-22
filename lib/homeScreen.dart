@@ -20,36 +20,42 @@ class _HomeScreenState extends State<HomeScreen> {
       "sub": "Wendy’s Burger",
       "rating": 4.9,
       "img": "assets/images/b1.png",
+      "discription":"The Cheeseburger Wendy's Burger is a classic fast food burger that packs a punch of flavor in every bite. Made with a juicy beef patty cooked to perfection, it's topped with melted American cheese, crispy lettuce, ripe tomato, and crunchy pickles.",
     },
     {
       "name": "Hamburger",
       "sub": "Veggie Burger",
       "rating": 4.9,
       "img": "assets/images/b2.png",
+      "discription":"Enjoy our delicious Hamburger Veggie Burger, made with a savory blend of fresh vegetables and herbs, topped with crisp lettuce, juicy tomatoes, and tangy pickles, all served on a soft, toasted bun.",
     },
     {
       "name": "Chicken Burger",
       "sub": "Chicken Burger",
       "rating": 4.8,
       "img": "assets/images/b3.png",
+      "discription":"Our chicken burger is a delicious and healthier alternative to traditional beef burgers, perfect for those looking for a lighter meal option. Try it today and experience the mouth-watering flavors of our Hamburger Chicken Burger!",
     },
     {
       "name": "Mutton Burger",
       "sub": "Wendy’s Burger",
       "rating": 4.7,
       "img": "assets/images/b4.png",
+      "discription":"Indulge in our crispy and savory Fried Chicken Burger, made with a juicy chicken patty, hand-breaded and deep-fried to perfection, served on a warm bun with lettuce, tomato, and a creamy sauce.",
     },
     {
       "name": "Crispy Burger",
       "sub": "Fried Chicken Burger",
       "rating": 4.6,
       "img": "assets/images/b1.png",
+      "discription":"Our chicken burger is a delicious and healthier alternative to traditional beef burgers, perfect for those looking for a lighter meal option. Try it today and experience the mouth-watering flavors of our Hamburger Chicken Burger!",
     },
     {
       "name": "BBQ Burger",
       "sub": "Fried Chicken Burger",
       "rating": 4.6,
       "img": "assets/images/b4.png",
+      "discription":"",
     },
   ];
 
@@ -64,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {
           print("Floating Button Pressed");
         },
-        child: const Icon(Icons.add, color: Colors.white),
+        child: const Icon(Icons.add, color: Colors.white,size: 30,),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(26)),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

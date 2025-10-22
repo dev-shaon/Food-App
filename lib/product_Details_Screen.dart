@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ProductDetailsScreen extends StatefulWidget {
   final Map<String, dynamic> product;
 
-  const ProductDetailsScreen({super.key, required this.product});
+const ProductDetailsScreen({super.key, required this.product});
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
@@ -68,13 +68,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             const SizedBox(height: 20),
 
             // food Description
-            const Text(
-              "The Cheeseburger Wendy's Burger is a classic fast food burger that packs a punch of flavor in every bite. Made with a juicy beef patty cooked to perfection, it's topped with melted American cheese, crispy lettuce, ripe tomato, and crunchy pickles.",
-              style: TextStyle(
-                fontSize: 16,
-                height: 1.5,
-                color: Colors.black87,
-              ),
+            Text(
+              widget.product["discription"],
+              style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
 
             const SizedBox(height: 40),
